@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block nav%}
+  {{ super() }}
+  <li>Documentation</li>
+{% endblock nav%}
+
+{% block content%}
+  {% if name %}
+    <h1>Hello {{ name }}!</h1>
+  {% else %}
+    <h1>Hello <span class='emphasis'>Stranger</span>!</h1>
+  {% endif %}
+{% endblock content%}

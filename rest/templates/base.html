@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <style>
+      body {
+        font-family: Times New Roman,serif;
+      }
+      .emphasis {
+        font-family: Verdana,sans-serif;
+        font-style: italic;
+      }
+    </style>
+  </head>
+  <body>
+    <title>Hello from Flask</title>
+    {% block nav %}
+      <li>Home</li>
+    {% endblock nav %}
+    {% block content %}
+    {% endblock content %}
+  </body>
+</html>
