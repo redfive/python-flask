@@ -11,7 +11,7 @@ def static_from_root(path):
     return send_from_directory(app.static_folder, request.path[1:])
 
 @app.route("/")
-def index():
+def home_page():
     response =  render_template('home.html')
     return response
 
