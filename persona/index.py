@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 from flask import render_template, request, session, send_from_directory
 from persona import app
 import requests
@@ -54,7 +52,3 @@ def do_login():
     # Oops, something failed. Abort.
     abort(500)
 
-
-if __name__ == "__main__":
-    app.debug = True
-    app.run()

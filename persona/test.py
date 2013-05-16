@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import os
-import persona.index as persona
+import persona
 import unittest
 import tempfile
 
