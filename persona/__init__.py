@@ -3,9 +3,8 @@ from flask import Flask
 all = ['app']
 
 app = Flask(__name__, static_folder='static')
+app.config.from_pyfile('config.py')
 
-# set the secret key to be used with sessions
-app.secret_key = '\xdfR\xd7.U%%T\x89hL\xc1\t\xd6D\xc8t\xe2]*\xa13\xf2\xd9'
-
+# import this after creating the app as the views use app
 from persona import views
 
