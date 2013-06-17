@@ -70,6 +70,7 @@
       }
     });
   };
+/*
   porkins.dropboxLogin = function p_dropboxLogin() {
     $.ajax({
       type: 'POST',
@@ -84,11 +85,14 @@
       }
     });
   };
+*/
 
   /**
    *  path should begin with a /
    **/
   porkins.getDropboxFolder = function p_getDropboxFolder(path) {
+    // TODO: find a better check/pattern here
+    // path = (typeof path === 'undefined') ? "" : path;
     path = path ? path : "";
     $.ajax({
       type: 'GET',
@@ -104,15 +108,10 @@
   };
 
   porkins.doLinkDropbox = function p_doLinkDropbox() {
-    $.ajax({
-      type: 'GET',
-      url: '/auth/dropbox',
-      success: function (res, status, xhr) {
-        console.log('DROPBOX AUTH SUCCESS: ' + res)
-      },
-      error: function (xhr, status, err) {
-        console.log('DROPBOX AUTH ERROR: ' + err)
-      }
+    $.get('/auth/dropbox').done( function (res, status, xhr) {
+      console.log('** DROPBOX AUTH SUCCESS: ' + res)
+    }).fail( function (xhr, status, err) {
+      console.log('** DROPBOX AUTH ERROR: ' + err)
     });
   };
 
