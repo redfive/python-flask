@@ -69,20 +69,6 @@ def login_dropbox():
 
   sess = session.DropboxSession(APP_KEY, APP_SECRET, ACCESS_TYPE)
 
-  #if 'dropbox_access_token' in  request.cookies:
-  if 'dropbox_access_token' in  current_user:
-    print "has access token"
-  else:
-    print "no access token"
-
-  #if 'dropbox_request_token' in request.cookies:
-  if 'dropbox_request_token' in current_user:
-    print "has request token"
-  else:
-    print "no request token"
-
-  #if 'dropbox_access_token' not in request.cookies:
-  #  if 'dropbox_request_token' not in request.cookies:
   if 'dropbox_access_token' not in current_user:
     if 'dropbox_request_token' not in current_user:
       # check for an access token, if it exists, we don't need to go through the
@@ -107,7 +93,6 @@ def login_dropbox():
       # we have the request token but still no access token
       #request_token = request.cookies['dropbox_request_token']
       request_token = current_user['dropbox_request_token']
-      import ipdb; ipdb.set_trace()
       print request_token.key
       print request_token.secret
 
@@ -137,6 +122,8 @@ def login_dropbox():
 
 @app.route('/content/dropbox/<path:path>', methods=['GET'])
 def getDropboxFolder():
+  # TODO: make the call to get the content at the path provided.
+  #       probably as a subdirectory to the music folder (?)
   return "hello metadata for: " + path
 
 
