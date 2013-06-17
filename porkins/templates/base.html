@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <link href="/css/porkins.css" rel="stylesheet" type="text/css" />
+    <script src="https://login.persona.org/include.js"></script>
+    <script src="/lib/jquery-2.0.0.js"></script>
+    <title>Persona Login Test App</title>
+  </head>
+  <body>
+    {% block nav %}
+    <span id='greeting'>Hello</span>
+    <span id='login_link'>(login)</span>
+    <span id='logout_link'>(logout)</span>
+    <span id='link_dropbox'>(dropbox_link)</span>
+    <span id='unlink_dropbox'>(dropbox_unlink)</span>
+    {% endblock nav %}
+    {% block content %}{% endblock content %}
+  </body>
+  <script src="/js/porkins.js"></script>
+</html>
