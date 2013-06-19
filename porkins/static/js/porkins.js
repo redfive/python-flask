@@ -94,24 +94,21 @@
     // TODO: find a better check/pattern here
     // path = (typeof path === 'undefined') ? "" : path;
     path = path ? path : "";
-    $.ajax({
-      type: 'GET',
-      url: '/content/dropbox' + path , 
-      success: function(res, status, xhr) {
-        console.log('DROPBOX FETCH SUCCESS');
-        console.log(res)
-      },
-      error: function(xhr, status, err) {
-        console.log('DROPBOX FETCH FAILED: ' + err);
-      }
+    $.get('/content/dropbox' + path).done( function (res, status, xhr) {
+      console.log('DROPBOX FETCH SUCCESS');
+      console.log(res)
+    }).fail( function(xhr, status, err) {
+      console.log('DROPBOX FETCH FAILED: ' + err);
     });
   };
 
   porkins.doLinkDropbox = function p_doLinkDropbox() {
     $.get('/auth/dropbox').done( function (res, status, xhr) {
-      console.log('** DROPBOX AUTH SUCCESS: ' + res)
+      console.log('** DROPBOX AUTH SUCCESS: ' + res);
+    }).then( function (res, status, xhr) {
+      console.log('** Then call the getFolder' + res);
     }).fail( function (xhr, status, err) {
-      console.log('** DROPBOX AUTH ERROR: ' + err)
+      console.log('** DROPBOX AUTH ERROR: ' + err);
     });
   };
 
