@@ -97,16 +97,21 @@
     $.get('/content/dropbox' + path).done( function (res, status, xhr) {
       console.log('DROPBOX FETCH SUCCESS');
       console.log(res)
+      $('#content').html(res);
     }).fail( function(xhr, status, err) {
       console.log('DROPBOX FETCH FAILED: ' + err);
     });
   };
 
   porkins.doLinkDropbox = function p_doLinkDropbox() {
-    $.get('/auth/dropbox').done( function (res, status, xhr) {
-      console.log('** DROPBOX AUTH SUCCESS: ' + res);
-    }).then( function (res, status, xhr) {
-      console.log('** Then call the getFolder' + res);
+    $.post('/auth/dropbox/start').done( function (res, status, xhr) {
+      if (xhr.status == 250) {
+        console.log('** DROPBOX AUTH REDIRECT TIME: ' + res);
+        window.location.replace(res);
+      } else {
+        console.log('** DROPBOX AUTH SUCCESS: ' + res);
+        porkins.getDropboxFolder("/");
+      }
     }).fail( function (xhr, status, err) {
       console.log('** DROPBOX AUTH ERROR: ' + err);
     });
